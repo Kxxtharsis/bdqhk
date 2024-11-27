@@ -28,7 +28,7 @@
           </div>
           <div class="form-group">
             <center>
-              <a href="Dashboard.html" class="link-button">Login</a>
+              <a href="Dashboard.php" class="link-button">Login</a>
             </center>
           </div>
         </form>

@@ -344,10 +344,10 @@
     <div class="sidebar">
       <nav>
         <h2>Bulu Tangkis</h2>
-        <a href="Dashboard.html" class="underline-animation">Dashboard</a>
-        <a href="User.html" class="underline-animation">User </a>
-        <a href="absensi.html" class="underline">Absensi</a>
-        <a href="index.html" class="underline-animation">Logout</a>
+        <a href="Dashboard.php" class="underline-animation">Dashboard</a>
+        <a href="User.php" class="underline-animation">User </a>
+        <a href="absensi.php" class="underline">Absensi</a>
+        <a href="index.php" class="underline-animation">Logout</a>
       </nav>
 
       <footer>
@@ -424,7 +424,7 @@
     <!-- Pop-up Add -->
     <div class="popup default-popup" id="popupDetails">
       <div class="popup-content">
-        <a href="absensi.html" class="close-btn">&times;</a>
+        <a href="absensi.php" class="close-btn">&times;</a>
         <h2>Details User</h2>
         <form>
           <input type="text" placeholder="Nama" required disabled />
