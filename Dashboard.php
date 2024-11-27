@@ -307,10 +307,10 @@
     <div class="sidebar">
       <nav>
         <h2>Bulu Tangkis</h2>
-        <a href="Dashboard.html" class="underline">Dashboard</a>
-        <a href="User.html" class="underline-animation">User</a>
-        <a href="absensi.html" class="underline-animation">Absensi</a>
-        <a href="index.html" class="underline-animation">Logout</a>
+        <a href="Dashboard.php" class="underline">Dashboard</a>
+        <a href="User.php" class="underline-animation">User</a>
+        <a href="absensi.php" class="underline-animation">Absensi</a>
+        <a href="index.php" class="underline-animation">Logout</a>
       </nav>
       <footer>
         <p style="font-size: 14px; color: #ffffff; text-align: center">

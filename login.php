@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user'] = $user['username'];
-        header('Location: Dashboard.html');
+        header('Location: Dashboard.php');
     } else {
         echo "Login gagal. Username atau password salah.";
     }

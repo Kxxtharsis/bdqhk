@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quest Hotel Kuta - User</title>
+    <title>Quest Hotel Kuta - Absensi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -207,13 +207,13 @@
 
       /* Add Button Styling */
       .add-button {
-        width: 40px;
+        width: fit-content;
         height: 40px;
-        border-radius: 50%;
+        border-radius: 10%;
         background-color: #6c217f;
         color: white;
-        font-size: 24px;
-        font-weight: bold;
+        font-size: 15px;
+        font-weight: medium;
         border: none;
         cursor: pointer;
         display: flex;
@@ -223,6 +223,7 @@
         margin-top: 15px;
         margin-left: 1570px;
         text-decoration: none;
+        padding: 0px 10px 0px 10px;
       }
 
       .add-button:hover {
@@ -344,10 +345,10 @@
     <div class="sidebar">
       <nav>
         <h2>Bulu Tangkis</h2>
-        <a href="Dashboard.html" class="underline-animation">Dashboard</a>
-        <a href="User.html" class="underline">User </a>
-        <a href="absensi.html" class="underline-animation">Absensi</a>
-        <a href="index.html" class="underline-animation">Logout</a>
+        <a href="Dashboard.php" class="underline-animation">Dashboard</a>
+        <a href="User.php" class="underline-animation">User </a>
+        <a href="absensi.php" class="underline">Absensi</a>
+        <a href="index.php" class="underline-animation">Logout</a>
       </nav>
 
       <footer>
@@ -361,7 +362,7 @@
     <div class="main-content">
       <!-- Header -->
       <div class="header">
-        <h1>User</h1>
+        <h1>Absensi</h1>
         <div class="profile">
           <img src="https://via.placeholder.com/35" alt="Profile Picture" />
           <span>Admin</span>
@@ -373,7 +374,7 @@
           href="#popupAdd"
           class="add-button"
           onclick="document.getElementById('popupAdd').style.display = 'flex';"
-          >+</a
+          >Absen</a
         >
         <!-- Tambahkan tombol di sini -->
       </div>
@@ -382,105 +383,63 @@
         <table>
           <thead>
             <tr>
-              <th>Photo</th>
               <th>Member name</th>
-              <th>Mobile</th>
+              <th>No telp</th>
               <th>Email</th>
               <th>Action</th>
             </tr>
           </thead>
           <tr>
-            <td>
-              <img
-                src="https://via.placeholder.com/40"
-                class="profile-pic"
-                alt="Profile picture"
-              />
-            </td>
             <td>Lavie</td>
             <td>0837223748</td>
             <td>Lavie@gmail.com</td>
             <td>
               <a
-                href="#popupEdit"
+                href="#popupDetails"
                 class="link-button"
-                onclick="document.getElementById('popupEdit').style.display = 'flex';"
-                >Edit</a
-              >
-              <a
-                href="#popupDelete"
-                class="link-button"
-                onclick="document.getElementById('popupDelete').style.display = 'flex';"
-                >Delete</a
+                onclick="document.getElementById('popupDetails').style.display = 'flex';"
+                >Details</a
               >
             </td>
           </tr>
           <tr>
-            <td>
-              <img
-                src="https://via.placeholder.com/40"
-                class="profile-pic"
-                alt="Profile picture"
-              />
-            </td>
             <td>Pak Farid</td>
             <td>0811111111</td>
             <td>pakfarid@gmail.com</td>
             <td>
               <a
-                href="#popupEdit"
+                href="#popupDetails"
                 class="link-button"
-                onclick="document.getElementById('popupEdit').style.display = 'flex';"
-                >Edit</a
-              >
-              <a
-                href="#popupDelete"
-                class="link-button"
-                onclick="document.getElementById('popupDelete').style.display = 'flex';"
-                >Delete</a
+                onclick="document.getElementById('popupDetails').style.display = 'flex';"
+                >Details</a
               >
             </td>
           </tr>
           <tr>
-            <td>
-              <img
-                src="https://via.placeholder.com/40"
-                class="profile-pic"
-                alt="Profile picture"
-              />
-            </td>
             <td>Bima</td>
             <td>083333333</td>
             <td>bima@gmail.com</td>
             <td>
               <a
-                href="#popupEdit"
+                href="#popupDetails"
                 class="link-button"
-                onclick="document.getElementById('popupEdit').style.display = 'flex';"
-                >Edit</a
-              >
-              <a
-                href="#popupDelete"
-                onclick="document.getElementById('popupDelete').style.display = 'flex';"
-                class="link-button"
-                >Delete</a
+                onclick="document.getElementById('popupDetails').style.display = 'flex';"
+                >Details</a
               >
             </td>
           </tr>
         </table>
       </div>
     </div>
-
     <!-- Pop-up Add -->
     <div class="popup default-popup" id="popupAdd">
       <div class="popup-content">
-        <a href="User.html" class="close-btn">&times;</a>
-        <h2>Add User</h2>
+        <a href="absensi-member.php" class="close-btn">&times;</a>
+        <h2>Absen</h2>
         <form>
-          <input type="text" placeholder="Enter name" required />
-          <input type="text" placeholder="Enter phone number" required />
-          <input type="email" placeholder="Enter email" required />
-          <label for="profile">Foto Profil</label>
+          <input type="date" placeholder="Enter Tanggal" required />
+          <input type="text" placeholder="Enter Lokasi (sementara)" required />
+          <label for="profile">Foto Bukti</label>
           <input
             type="file"
             name="profile"
@@ -492,49 +451,33 @@
             type="submit"
             onclick="document.getElementById('popupAdd').style.display = 'none';"
           >
-            Add
+            Absen
           </button>
         </form>
       </div>
     </div>
-
-    <!-- Pop-up Edit -->
-    <div class="popup default-popup" id="popupEdit">
+    <!-- Pop-up Add -->
+    <div class="popup default-popup" id="popupDetails">
       <div class="popup-content">
-        <a href="./User.html" class="close-btn">&times;</a>
-        <h2>Edit User</h2>
+        <a href="absensi-member.php" class="close-btn">&times;</a>
+        <h2>Details User</h2>
         <form>
-          <input type="text" placeholder="Enter new name" required />
-          <input type="text" placeholder="Enter new phone number" required />
-          <input type="email" placeholder="Enter new email" required />
+          <input type="text" placeholder="Nama" required disabled />
+          <input type="text" placeholder="Jenis Kelamin" required disabled />
+          <input type="email" placeholder="Divisi" required disabled />
+          <input type="email" placeholder="Tanggal Absen" required disabled />
+          <input type="email" placeholder="Lokasi" required disabled />
+          <img
+            src="https://www.w3schools.com/w3images/wedding.jpg"
+            style="width: 100%"
+          />
           <button
             type="submit"
-            onclick="document.getElementById('popupEdit').style.display = 'none';"
+            onclick="document.getElementById('popupDetails').style.display = 'none';"
           >
-            Save Changes
+            Close
           </button>
         </form>
-      </div>
-    </div>
-
-    <!-- Pop-up Delete -->
-    <div class="popup" id="popupDelete">
-      <div class="popup-content">
-        <a href="./User.html" class="close-btn">&times;</a>
-        <h2>Delete User</h2>
-        <p>Are you sure you want to delete this user?</p>
-        <button
-          onclick="document.getElementById('popupDelete').style.display = 'none';"
-        >
-          Yes, Delete
-        </button>
-        <button
-          onclick="document.getElementById('popupDelete').style.display = 'none';"
-        >
-          <a href="./User.html" style="color: white; text-decoration: none"
-            >Cancel</a
-          >
-        </button>
       </div>
     </div>
   </body>
