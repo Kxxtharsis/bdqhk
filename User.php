@@ -479,7 +479,8 @@
         <form>
           <input type="text" placeholder="Enter name" required />
           <input type="text" placeholder="Enter phone number" required />
-          <input type="email" placeholder="Enter email" required />
+          <input type="email" placeholder="Divisi" required />
+          <input type="email" placeholder="Jenis Kelamin" required />
           <label for="profile">Foto Profil</label>
           <input
             type="file"
