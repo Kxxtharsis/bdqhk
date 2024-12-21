@@ -1,3 +1,12 @@
+<?php 
+
+if (isset($_SESSION['error'])) {
+  echo "<script>alert('" . $_SESSION['error'] . "');</script>";
+  unset($_SESSION['error']); // Hapus pesan error setelah ditampilkan
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
