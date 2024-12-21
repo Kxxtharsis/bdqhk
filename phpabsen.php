@@ -1,4 +1,6 @@
 <?php
+session_start();
+include 'connection.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tanggal_absen = $_POST['tanggal_absen'];
     $lokasi = $_POST['lokasi'];
@@ -12,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // Insert to database
-    $sql = "INSERT INTO absensi (tanggal_absen, lokasi, gambar) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO absensi (tanggal_abgsen, lokasi, gambar) VALUES ($tanggal_absen, $lokasi, $foto_bukti)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $tanggal_absen, $lokasi, $foto_bukti);
     
@@ -21,6 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "<script>alert('Error: " . $stmt->error . "');</script>";
     }
-    $stmt->close();
+    $connection->close();
 }
 ?>
