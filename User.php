@@ -477,9 +477,10 @@
         <a href="User.php" class="close-btn">&times;</a>
         <h2>Add User</h2>
         <form>
-          <input type="submit" placeholder="Enter name" required />
-          <input type="submit" placeholder="Enter phone number" required />
-          <input type="submit" placeholder="Enter email" required />
+          <input type="text" placeholder="Enter name" required />
+          <input type="text" placeholder="Enter phone number" required />
+          <input type="email" placeholder="Divisi" required />
+          <input type="email" placeholder="Jenis Kelamin" required />
           <label for="profile">Foto Profil</label>
           <input
             type="file"
