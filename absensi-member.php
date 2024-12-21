@@ -437,8 +437,8 @@
         <a href="absensi-member.php" class="close-btn">&times;</a>
         <h2>Absen</h2>
         <form>
-          <input type="date" placeholder="Enter Tanggal" required />
-          <input type="text" placeholder="Enter Lokasi (sementara)" required />
+          <input type="date" placeholder="Enter Tanggal" required name="tanggal_absen"/>
+          <input type="text" placeholder="Enter Lokasi (sementara)" name="lokasi" />
           <label for="profile">Foto Bukti</label>
           <input
             type="file"
