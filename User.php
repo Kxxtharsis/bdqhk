@@ -337,6 +337,23 @@
       .link-button:hover {
         background-color: #8a3f9c; /* Hover effect for consistency */
       }
+
+  @media only screen and (max-width:375px) {
+  /* For tablets: */
+  .main {
+    width: 80%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
     </style>
   </head>
   <body>
