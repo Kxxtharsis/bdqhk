@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $telpon = $_POST['telpon'];
     $divis = $_POST['divdivisiision'];
     $jenis_kelamin = $_POST['jenis_kelamin'];
+    $password = $_POST['password'];
     $profile = $_FILES['profile']['name'];
 
     // Lokasi untuk menyimpan file foto
@@ -16,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      // Validasi dan upload file
      if (move_uploaded_file($_FILES["profile"]["tmp_name"], $target_file)) {
         // Query untuk menambahkan data
-        $sql = "INSERT INTO users (name, phone, division, gender, profile) 
-                VALUES ('$name', '$phone', '$division', '$gender', '$profile')";
+        $sql = "INSERT INTO users (nama, telpon, divisi, jenis_kelamin, password, profile) 
+                VALUES ('$nama', '$telpon', '$divisi', '$jenis_kelamin', '$password', '$profile')";
 
         if ($conn->query($sql) === TRUE) {
             echo "User berhasil ditambahkan.";
