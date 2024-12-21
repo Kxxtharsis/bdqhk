@@ -544,7 +544,9 @@
         <button
           onclick="document.getElementById('popupDelete').style.display = 'none';"
         >
-          Yes, Delete
+        <a href="delete user.php?id=USER_ID" style="color: white; text-decoration: none;">
+            Yes, Delete
+        </a>
         </button>
         <button
           onclick="document.getElementById('popupDelete').style.display = 'none';"

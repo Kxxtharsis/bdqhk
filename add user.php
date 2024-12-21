@@ -1,4 +1,6 @@
 <?php
+session_start();
+include 'connection.php';
 // Jika Form Dikirim
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];

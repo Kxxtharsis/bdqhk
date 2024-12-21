@@ -1,4 +1,6 @@
 <?php
+session_start();
+include 'connection.php';
 // Jika ID user dikirim via GET atau POST
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
