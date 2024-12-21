@@ -310,11 +310,11 @@
         <a href="Dashboard.php" class="underline">Dashboard</a>
         <a href="User.php" class="underline-animation">User</a>
         <a href="absensi.php" class="underline-animation">Absensi</a>
-        <a href="index.php" class="underline-animation">Logout</a>
+        <a href="logout.php" class="underline-animation">Logout</a>
       </nav>
       <footer>
         <p style="font-size: 14px; color: #ffffff; text-align: center">
-          &copy; 2024 Lavie
+          &copy; 2024 IT
         </p>
       </footer>
     </div>
