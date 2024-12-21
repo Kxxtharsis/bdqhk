@@ -268,7 +268,7 @@
         width: 100%;
       }
 
-      /* Responsive layout - makes a two column-layout instead of four columns */
+      /* Responsive layout - makes a two column-layout instead of four columns
       @media screen and (max-width: 800px) {
         .column {
           -ms-flex: 50%;
@@ -278,14 +278,29 @@
       }
 
       /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-      @media screen and (max-width: 600px) {
+      /* @media screen and (max-width: 600px) {
         .column {
           -ms-flex: 100%;
           flex: 100%;
           max-width: 100%;
         }
-      }
-
+      }  */
+      @media only screen and (max-width:375px) {
+  /* For tablets: */
+  .main {
+    width: 80%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
       .icon-image {
         width: 50px;
         height: 50px;
