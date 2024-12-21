@@ -3,10 +3,10 @@ session_start();
 include 'connection.php';
 // Jika Form Dikirim
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST['name'];
-    $phone = $_POST['phone'];
-    $division = $_POST['division'];
-    $gender = $_POST['gender'];
+    $nama = $_POST['nama'];
+    $telpon = $_POST['telpon'];
+    $divis = $_POST['divdivisiision'];
+    $jenis_kelamin = $_POST['jenis_kelamin'];
     $profile = $_FILES['profile']['name'];
 
     // Lokasi untuk menyimpan file foto

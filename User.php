@@ -477,10 +477,10 @@
         <a href="User.php" class="close-btn">&times;</a>
         <h2>Add User</h2>
         <form>
-          <input type="text" placeholder="Enter name" required />
-          <input type="text" placeholder="Enter phone number" required />
-          <input type="email" placeholder="Divisi" required />
-          <input type="email" placeholder="Jenis Kelamin" required />
+          <input type="text" placeholder="Enter name" name="nama" />
+          <input type="text" placeholder="Enter phone number" required name="telpon"/>
+          <input type="text" placeholder="Divisi" required name="divisi"/>
+          <input type="text" placeholder="Jenis Kelamin" required name="jenis_kelamin"/>
           <label for="profile">Foto Profil</label>
           <input
             type="file"
