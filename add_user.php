@@ -4,7 +4,9 @@ include 'connection.php';
 // Jika Form Dikirim
 
 function alert($msg) {
-    echo "<script type='text/javascript'>alert('$msg');</script>";
+    echo "<script type='text/javascript'>alert('$msg'); 
+    window.location.href='user.php'
+    </script>";
 }
     $nama = $_POST['nama'];
     $telpon = $_POST['telpon'];
@@ -28,7 +30,8 @@ function alert($msg) {
 
         if ($connection->query($sql) === TRUE) {
             // echo "User berhasil ditambahkan.";
-            alert("user berhasil ditambahkan");
+            alert("user berhasil ditambahkan"); 
+            
         } else {
             // echo "Error: " . $sql . "<br>" . $connection->error;
             alert("Error: " . $sql . "<br>" . $connection->error);

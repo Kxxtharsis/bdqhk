@@ -1,6 +1,7 @@
 <?php
 // Database connection
 require_once("./connection.php");
+session_start();
 
 // Check connection
 if (!$connection) {
@@ -375,9 +376,17 @@ $result = $connection->query($sql);
       <!-- Header -->
       <div class="header">
         <h1>User</h1>
+        <?php
+          $uname_login = $_SESSION['nama'];
+
+          $sql_login = "SELECT foto_profil FROM user WHERE nama = '$uname_login'";
+          $result_login = $connection->query($sql_login);
+          
+          $row_login = $result_login->fetch_assoc();''
+        ?>
         <div class="profile">
-          <img src="https://via.placeholder.com/35" alt="Profile Picture" />
-          <span>Admin</span>
+          <img src="upload/<?php echo $row_login['foto_profil'] ?>" alt="Profile Picture" />
+          <span><?php echo($_SESSION["nama"])?></span>
         </div>
       </div>
 
@@ -406,7 +415,7 @@ $result = $connection->query($sql);
             <tr>
                 <td>
                     <img 
-                        src="https://via.placeholder.com/40"
+                        src="upload/<?php echo $row['foto_profil']?>"
                         class="profile-pic"
                         alt="Profile picture"
                     />
