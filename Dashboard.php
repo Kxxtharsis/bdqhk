@@ -1,3 +1,17 @@
+<?php
+// Database connection
+require_once("./connection.php");
+session_start();
+
+// Check connection
+if (!$connection) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Fetch members data
+$sql = "SELECT * FROM user ORDER BY nama ASC";
+$result = $connection->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -370,15 +384,10 @@
     <div class="main-content">
       <!-- Header -->
       <div class="header">
-        <!-- burger menu diubah g ari  ===========================================================================================================-->
-        <button id="burger_menu">
-          <img src="./img/Logo/interface.png" alt="">  
-        </button>
-        <!-- sampe sini   -->
-      <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
         <div class="profile">
-          <img src="https://via.placeholder.com/35" alt="Profile Picture" />
-          <span>Admin</span>
+          <img src="upload/<?php echo $row_login['foto_profil'] ?>" alt="Profile Picture" />
+          <span><?php echo($_SESSION["nama"])?></span>
         </div>
       </div>
 

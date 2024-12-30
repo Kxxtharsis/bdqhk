@@ -1,3 +1,17 @@
+<?php
+// Database connection
+require_once("./connection.php");
+session_start();
+
+// Check connection
+if (!$connection) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Fetch members data
+$sql = "SELECT * FROM user ORDER BY nama ASC";
+$result = $connection->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -446,9 +460,17 @@
           <img src="./img/Logo/interface.png" alt="">  
         </button>
         <h1>User</h1>
+        <?php
+          $uname_login = $_SESSION['nama'];
+
+          $sql_login = "SELECT foto_profil FROM user WHERE nama = '$uname_login'";
+          $result_login = $connection->query($sql_login);
+          
+          $row_login = $result_login->fetch_assoc();''
+        ?>
         <div class="profile">
-          <img src="https://via.placeholder.com/35" alt="Profile Picture" />
-          <span>Admin</span>
+          <img src="upload/<?php echo $row_login['foto_profil'] ?>" alt="Profile Picture" />
+          <span><?php echo($_SESSION["nama"])?></span>
         </div>
       </div>
 
@@ -473,84 +495,29 @@
               <th>Action</th>
             </tr>
           </thead>
-          <tr>
-            <td>
-              <img
-                src="https://via.placeholder.com/40"
-                class="profile-pic"
-                alt="Profile picture"
-              />
-            </td>
-            <td>Lavie</td>
-            <td>0837223748</td>
-            <td>Lavie@gmail.com</td>
-            <td>
-              <a
-                href="#popupEdit"
-                class="link-button"
-                onclick="document.getElementById('popupEdit').style.display = 'flex';"
-                >Edit</a
-              >
-              <a
-                href="#popupDelete"
-                class="link-button"
-                onclick="document.getElementById('popupDelete').style.display = 'flex';"
-                >Delete</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img
-                src="https://via.placeholder.com/40"
-                class="profile-pic"
-                alt="Profile picture"
-              />
-            </td>
-            <td>Pak Farid</td>
-            <td>0811111111</td>
-            <td>pakfarid@gmail.com</td>
-            <td>
-              <a
-                href="#popupEdit"
-                class="link-button"
-                onclick="document.getElementById('popupEdit').style.display = 'flex';"
-                >Edit</a
-              >
-              <a
-                href="#popupDelete"
-                class="link-button"
-                onclick="document.getElementById('popupDelete').style.display = 'flex';"
-                >Delete</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img
-                src="https://via.placeholder.com/40"
-                class="profile-pic"
-                alt="Profile picture"
-              />
-            </td>
-            <td>Bima</td>
-            <td>083333333</td>
-            <td>bima@gmail.com</td>
-            <td>
-              <a
-                href="#popupEdit"
-                class="link-button"
-                onclick="document.getElementById('popupEdit').style.display = 'flex';"
-                >Edit</a
-              >
-              <a
-                href="#popupDelete"
-                onclick="document.getElementById('popupDelete').style.display = 'flex';"
-                class="link-button"
-                >Delete</a
-              >
-            </td>
-          </tr>
+          <?php while($row = $result->fetch_assoc()): ?>
+            <tr>
+                <td>
+                    <img 
+                        src="upload/<?php echo $row['foto_profil']?>"
+                        class="profile-pic"
+                        alt="Profile picture"
+                    />
+                </td>
+                <td><?php echo $row['nama']; ?></td>
+                <td><?php echo $row['telpon']; ?></td>
+                <td><?php echo $row['divisi']; ?></td>
+                <td>
+                    <a 
+                        href="#popupEdit" 
+                        class="link-button"
+                        onclick="document.getElementById('popupEdit').style.display = 'flex';"
+                    >
+                        Edit
+                    </a>
+                </td>
+            </tr>
+        <?php endwhile; ?>
         </table>
       </div>
     </div>
@@ -560,17 +527,17 @@
       <div class="popup-content">
         <a href="User.php" class="close-btn">&times;</a>
         <h2>Add User</h2>
-        <form>
+        <form action="add_user.php" method="POST" enctype="multipart/form-data">
           <input type="text" placeholder="Enter name" name="nama" />
           <input type="text" placeholder="Enter phone number" required name="telpon"/>
           <input type="text" placeholder="Divisi" required name="divisi"/>
           <input type="text" placeholder="Jenis Kelamin" required name="jenis_kelamin"/>
-          <input type="password" placeholder="Password" required name="password "/>
+          <input type="password" placeholder="Password" required name="password"/>
 
-          <label for="profile">Foto Profil</label>
+          <label for="foto_pfofile">Foto Profil</label>
           <input
             type="file"
-            name="profile"
+            name="foto_profil"
             placeholder="Foto Profile"
             required
           />

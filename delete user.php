@@ -17,5 +17,5 @@ if (isset($_GET['id_user'])) {
     echo "ID user tidak ditemukan.";
 }
 
-$conn->close();
+$connection->close();
 ?>
