@@ -25,14 +25,19 @@
         background-color: #f0f2f5;
       }
 
+      /* di class sidebar ditambah margin, position sma transition  ===========================================================================================================*/
       .sidebar {
         width: 250px;
+        height: 130vh;
         background-color: #6c217f;
         color: #ecf0f1;
         padding: 20px;
         display: flex;
+        margin: 0px 0px 0px -250px;
         flex-direction: column;
         justify-content: space-between;
+        position: absolute;
+        transition: .5s;
       }
 
       .sidebar h2 {
@@ -338,6 +343,22 @@
       .link-button:hover {
         background-color: #8a3f9c; /* Hover effect for consistency */
       }
+          /* burger menu sama burger menu img ditambah g ari  ===========================================================================================================*/
+      #burger_menu{
+        display: relative;
+        background-color: #6c217f;
+        border-radius: 5px;
+      }
+
+      #burger_menu img{
+        width: 40px;
+        height: 40px;
+      }
+
+      #burger_menu_sidebar{
+        background-color:#6c217f;
+        border: 0px;
+      }
     </style>
   </head>
   <body>
@@ -362,6 +383,11 @@
     <div class="main-content">
       <!-- Header -->
       <div class="header">
+          <!-- burger menu diubah g ari  ===========================================================================================================-->
+        <button id="burger_menu">
+          <img src="./img/Logo/interface.png" alt="">  
+        </button>
+        <!-- sampe sini   -->
         <h1>Absensi</h1>
         <div class="profile">
           <img src="https://via.placeholder.com/35" alt="Profile Picture" />
@@ -481,4 +507,26 @@
       </div>
     </div>
   </body>
+   <!-- script js ditambah g ari  ===========================================================================================================-->
+  <script>
+
+    //burger menu yang ada di sidebar
+    document.getElementById("burger_menu_sidebar").addEventListener('click', hideSidebar);
+
+    //burger menu yang di luar sidebar
+    document.getElementById("burger_menu").addEventListener('click', showSidebar);
+
+    
+    function showSidebar(){
+      const sidebar = document.getElementsByClassName("sidebar");
+      sidebar[0].style.margin = "0px";
+      
+    }
+    function hideSidebar(){
+      const sidebar = document.getElementsByClassName("sidebar");
+      sidebar[0].style.margin = "0px 0px 0px -250px";
+    }
+
+  </script>
+  <!-- sampe sini  -->
 </html>

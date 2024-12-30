@@ -25,19 +25,33 @@
         background-color: #f0f2f5;
       }
 
+      /* di class sidebar ditambah margin, position sma transition  ===========================================================================================================*/
       .sidebar {
         width: 250px;
+        height: 130vh;
         background-color: #6c217f;
         color: #ecf0f1;
         padding: 20px;
         display: flex;
+        margin: 0px 0px 0px -250px;
         flex-direction: column;
         justify-content: space-between;
+        position: absolute;
+        transition: .5s;
       }
 
+      .sidebar_header{
+        display: flex;
+        justify-content: space-between;
+        height: 80px;
+        padding-right: 10px;
+      
+      }
+      
       .sidebar h2 {
         font-size: 20px;
-        margin-bottom: 30px;
+        margin-top: 20px;
+        margin-bottom: 10px;
         text-align: center;
       }
 
@@ -221,7 +235,6 @@
         justify-content: center;
         transition: background-color 0.3s ease;
         margin-top: 15px;
-        margin-left: 1570px;
         text-decoration: none;
       }
 
@@ -338,7 +351,7 @@
         background-color: #8a3f9c; /* Hover effect for consistency */
       }
 
-  @media only screen and (max-width:375px) {
+            @media only screen and (max-width:375px) {
   /* For tablets: */
   .main {
     width: 80%;
@@ -347,37 +360,91 @@
   .right {
     width: 100%;
   }
+
+  table th,
+  table td{
+    font-size: 9px !important;
+    padding: 8x;
+  }
 }
 @media only screen and (max-width:500px) {
   /* For mobile phones: */
   .menu, .main, .right {
     width: 100%;
   }
+
+  table th,
+  table td{
+    font-size: 9px !important;
+    padding: 5px;
+  }
+
+  .content {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-rows: auto;
+      }
+  
+      .sidebar {
+        width: 150px;
+      }
 }
+    /* burger menu sama burger menu img ditambah g ari  ===========================================================================================================*/
+      #burger_menu{
+        display: relative;
+        background-color: #6c217f;
+        border-radius: 5px;
+      }
+
+      #burger_menu img{
+        width: 40px;
+        height: 40px;
+      }
+
+      #burger_menu_sidebar{
+        background-color:#6c217f;
+        border: 0px;
+      }
+
+      #burger_menu_sidebar img{
+        width: 40px;
+        height: 40px;
+      }
+
+  /* .sidebar{
+    display: none !important;
+  } */
+
     </style>
   </head>
   <body>
     <!-- Sidebar -->
     <div class="sidebar">
       <nav>
-        <h2>Bulu Tangkis</h2>
+         <!-- sidebar header diubah g ari  ===========================================================================================================-->
+        <div class="sidebar_header">
+          <button id="burger_menu_sidebar">
+            <img src="./img/Logo/interface.png" alt="">
+          </button>
+          <h2>Bulu Tangkis</h2>
+        </div>
+        <!-- sampe sini  -->
+        
         <a href="Dashboard.php" class="underline-animation">Dashboard</a>
         <a href="User.php" class="underline">User </a>
         <a href="absensi.php" class="underline-animation">Absensi</a>
         <a href="index.php" class="underline-animation">Logout</a>
       </nav>
 
-      <footer>
-        <p style="font-size: 14px; color: #ffffff; text-align: center">
-          &copy; 2024 Lavie
-        </p>
-      </footer>
+      
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
       <!-- Header -->
       <div class="header">
+        <button id="burger_menu">
+          <img src="./img/Logo/interface.png" alt="">  
+        </button>
         <h1>User</h1>
         <div class="profile">
           <img src="https://via.placeholder.com/35" alt="Profile Picture" />
@@ -385,7 +452,7 @@
         </div>
       </div>
 
-      <div class="cover-button">
+      <div class="add-button-container">
         <a
           href="#popupAdd"
           class="add-button"
@@ -560,4 +627,26 @@
       </div>
     </div>
   </body>
+    <!-- script js ditambah g ari  ===========================================================================================================-->
+  <script>
+
+    //burger menu yang ada di sidebar
+    document.getElementById("burger_menu_sidebar").addEventListener('click', hideSidebar);
+
+    //burger menu yang di luar sidebar
+    document.getElementById("burger_menu").addEventListener('click', showSidebar);
+
+    
+    function showSidebar(){
+      const sidebar = document.getElementsByClassName("sidebar");
+      sidebar[0].style.margin = "0px";
+      
+    }
+    function hideSidebar(){
+      const sidebar = document.getElementsByClassName("sidebar");
+      sidebar[0].style.margin = "0px 0px 0px -250px";
+    }
+
+  </script>
+  <!-- sampe sini  -->
 </html>
