@@ -448,7 +448,11 @@ $result = $connection->query($sql);
         <a href="absensi.php" class="underline-animation">Absensi</a>
         <a href="index.php" class="underline-animation">Logout</a>
       </nav>
-
+      <footer>
+        <p style="font-size: 14px; color: #ffffff; text-align: center">
+          &copy; 2024 IT
+        </p>
+      </footer>
       
     </div>
 
@@ -511,10 +515,17 @@ $result = $connection->query($sql);
                     <a 
                         href="#popupEdit" 
                         class="link-button"
-                        onclick="document.getElementById('popupEdit').style.display = 'flex';"
-                    >
+                        onclick="document.getElementById('popupEdit').style.display = 'flex';">
                         Edit
                     </a>
+                   <a 
+                        href="#popupDelete" 
+                        class="link-button"
+                        onclick="document.getElementById('popupDelete').style.display = 'flex';"
+                    >
+                        Delete
+                    </a>
+
                 </td>
             </tr>
         <?php endwhile; ?>

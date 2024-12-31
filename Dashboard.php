@@ -42,7 +42,7 @@ $result = $connection->query($sql);
       /* di class sidebar ditambah margin, position sma transition  ===========================================================================================================*/
       .sidebar {
         width: 250px;
-        height: 130vh;
+        height: 162vh;
         background-color: #6c217f;
         color: #ecf0f1;
         padding: 20px;
@@ -384,6 +384,11 @@ $result = $connection->query($sql);
     <div class="main-content">
       <!-- Header -->
       <div class="header">
+         <!-- burger menu diubah g ari  ===========================================================================================================-->
+        <button id="burger_menu">
+          <img src="./img/Logo/interface.png" alt="">  
+        </button>
+        <!-- sampe sini   -->
         <h1>Dashboard</h1>
         <div class="profile">
           <img src="upload/<?php echo $row_login['foto_profil'] ?>" alt="Profile Picture" />
