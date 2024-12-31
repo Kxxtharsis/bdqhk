@@ -390,6 +390,14 @@ $result = $connection->query($sql);
         </button>
         <!-- sampe sini   -->
         <h1>Dashboard</h1>
+        <?php
+          $uname_login = $_SESSION['nama'];
+
+          $sql_login = "SELECT foto_profil FROM user WHERE nama = '$uname_login'";
+          $result_login = $connection->query($sql_login);
+          
+          $row_login = $result_login->fetch_assoc();''
+        ?>
         <div class="profile">
           <img src="upload/<?php echo $row_login['foto_profil'] ?>" alt="Profile Picture" />
           <span><?php echo($_SESSION["nama"])?></span>
