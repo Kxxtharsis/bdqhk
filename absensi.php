@@ -39,20 +39,33 @@ $result = $connection->query($sql);
         background-color: #f0f2f5;
       }
 
+      /* di class sidebar ditambah margin, position sma transition  ===========================================================================================================*/
       .sidebar {
         width: 250px;
+        height: 130vh;
         background-color: #6c217f;
         color: #ecf0f1;
         padding: 20px;
         display: flex;
+        margin: 0px 0px 0px -250px;
         flex-direction: column;
         justify-content: space-between;
+        position: absolute;
+        transition: .5s;
       }
 
-      .sidebar h2 {
+      .sidebar_header{
+        display: flex;
+        justify-content: space-between;
+        height: 80px;
+        padding-right: 10px;
+      
+      }
+
+      .sidebar nav h2 {
+        margin-top: 20px;
         font-size: 20px;
-        margin-bottom: 30px;
-        text-align: center;
+
       }
 
       .sidebar nav a {
@@ -351,13 +364,43 @@ $result = $connection->query($sql);
       .link-button:hover {
         background-color: #8a3f9c; /* Hover effect for consistency */
       }
+
+         /* burger menu sama burger menu img ditambah g ari  ===========================================================================================================*/
+      #burger_menu{
+        display: relative;
+        background-color: #6c217f;
+        border-radius: 5px;
+      }
+
+      #burger_menu img{
+        width: 40px;
+        height: 40px;
+      }
+
+      #burger_menu_sidebar{
+        background-color:#6c217f;
+        border: 0px;
+      }
+
+      #burger_menu_sidebar img{
+        width: 40px;
+        height: 40px;
+      }
+
     </style>
   </head>
   <body>
     <!-- Sidebar -->
     <div class="sidebar">
       <nav>
-        <h2>Bulu Tangkis</h2>
+         <!-- sidebar header diubah g ari  ===========================================================================================================-->
+        <div class="sidebar_header">
+          <button id="burger_menu_sidebar">
+            <img src="./img/Logo/interface.png" alt="">
+          </button>
+          <h2>Bulu Tangkis</h2>
+        </div>
+        <!-- sampe sini  -->
         <a href="Dashboard.php" class="underline-animation">Dashboard</a>
         <a href="User.php" class="underline-animation">User </a>
         <a href="absensi.php" class="underline">Absensi</a>
@@ -366,7 +409,7 @@ $result = $connection->query($sql);
 
       <footer>
         <p style="font-size: 14px; color: #ffffff; text-align: center">
-          &copy; 2024 Lavie
+          &copy; 2024 IT
         </p>
       </footer>
     </div>
@@ -375,6 +418,11 @@ $result = $connection->query($sql);
     <div class="main-content">
       <!-- Header -->
       <div class="header">
+        <!-- burger menu diubah g ari  ===========================================================================================================-->
+        <button id="burger_menu">
+          <img src="./img/Logo/interface.png" alt="">  
+        </button>
+        <!-- sampe sini   -->
         <h1>Absensi</h1>
         <?php
           $uname_login = $_SESSION['nama'];
@@ -468,4 +516,26 @@ $result = $connection->query($sql);
       </div>
     </div>
   </body>
+  <!-- script js ditambah g ari  ===========================================================================================================-->
+  <script>
+
+    //burger menu yang ada di sidebar
+    document.getElementById("burger_menu_sidebar").addEventListener('click', hideSidebar);
+
+    //burger menu yang di luar sidebar
+    document.getElementById("burger_menu").addEventListener('click', showSidebar);
+
+    
+    function showSidebar(){
+      const sidebar = document.getElementsByClassName("sidebar");
+      sidebar[0].style.margin = "0px";
+      
+    }
+    function hideSidebar(){
+      const sidebar = document.getElementsByClassName("sidebar");
+      sidebar[0].style.margin = "0px 0px 0px -250px";
+    }
+
+  </script>
+  <!-- sampe sini  -->
 </html>

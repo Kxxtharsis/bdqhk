@@ -39,19 +39,32 @@ $result = $connection->query($sql);
         background-color: #f0f2f5;
       }
 
+      /* di class sidebar ditambah margin, position sma transition  ===========================================================================================================*/
       .sidebar {
         width: 250px;
+        height: 130vh;
         background-color: #6c217f;
         color: #ecf0f1;
         padding: 20px;
         display: flex;
+        margin: 0px 0px 0px -250px;
         flex-direction: column;
         justify-content: space-between;
+        position: absolute;
+        transition: .5s;
+      }
+
+      .sidebar_header{
+        display: flex;
+        justify-content: space-between;
+        height: 80px;
+        padding-right: 10px;
       }
 
       .sidebar h2 {
         font-size: 20px;
-        margin-bottom: 30px;
+        padding-top: 5px;
+        margin-top: 20px;
         text-align: center;
       }
 
@@ -66,6 +79,11 @@ $result = $connection->query($sql);
 
       .sidebar nav h2 {
         margin-bottom: 50px;
+      }
+
+      .sidebar img {
+        width: 40px;
+        height: 40px;
       }
 
       .main-content {
@@ -281,25 +299,31 @@ $result = $connection->query($sql);
         vertical-align: middle;
         width: 100%;
       }
+      @media only screen and (max-width:375px) {
+  /* For tablets: */
+  .main {
+    width: 80%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
 
-      /* Responsive layout - makes a two column-layout instead of four columns */
-      @media screen and (max-width: 800px) {
-        .column {
-          -ms-flex: 50%;
-          flex: 50%;
-          max-width: 50%;
-        }
+  .content {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-rows: auto;
       }
-
-      /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-      @media screen and (max-width: 600px) {
-        .column {
-          -ms-flex: 100%;
-          flex: 100%;
-          max-width: 100%;
-        }
+  
+      .sidebar {
+        width: 150px;
       }
-
+}
       .icon-image {
         width: 50px;
         height: 50px;
@@ -314,13 +338,37 @@ $result = $connection->query($sql);
         vertical-align: middle;
         margin-top: 10px;
       }
+
+      /* burger menu sama burger menu img ditambah g ari  ===========================================================================================================*/
+      #burger_menu{
+        display: relative;
+        background-color: #6c217f;
+        border-radius: 5px;
+      }
+
+      #burger_menu img{
+        width: 40px;
+        height: 40px;
+      }
+
+      #burger_menu_sidebar{
+        background-color:#6c217f;
+        border: 0px;
+      }
     </style>
   </head>
   <body>
     <!-- Sidebar -->
     <div class="sidebar">
       <nav>
-        <h2>Bulu Tangkis</h2>
+        <!-- sidebar header diubah g ari  ===========================================================================================================-->
+        <div class="sidebar_header">
+          <button id="burger_menu_sidebar">
+            <img src="./img/Logo/interface.png" alt="">
+          </button>
+          <h2>Bulu Tangkis</h2>
+        </div>
+        <!-- sampe sini  -->
         <a href="Dashboard.php" class="underline">Dashboard</a>
         <a href="User.php" class="underline-animation">User</a>
         <a href="absensi.php" class="underline-animation">Absensi</a>
@@ -337,14 +385,6 @@ $result = $connection->query($sql);
       <!-- Header -->
       <div class="header">
         <h1>Dashboard</h1>
-        <?php
-          $uname_login = $_SESSION['nama'];
-
-          $sql_login = "SELECT foto_profil FROM user WHERE nama = '$uname_login'";
-          $result_login = $connection->query($sql_login);
-          
-          $row_login = $result_login->fetch_assoc();''
-        ?>
         <div class="profile">
           <img src="upload/<?php echo $row_login['foto_profil'] ?>" alt="Profile Picture" />
           <span><?php echo($_SESSION["nama"])?></span>
@@ -492,4 +532,27 @@ $result = $connection->query($sql);
       <!-- Content -->
     </div>
   </body>
+
+  <!-- script js ditambah g ari  ===========================================================================================================-->
+  <script>
+
+    //burger menu yang ada di sidebar
+    document.getElementById("burger_menu_sidebar").addEventListener('click', hideSidebar);
+
+    //burger menu yang di luar sidebar
+    document.getElementById("burger_menu").addEventListener('click', showSidebar);
+
+    
+    function showSidebar(){
+      const sidebar = document.getElementsByClassName("sidebar");
+      sidebar[0].style.margin = "0px";
+      
+    }
+    function hideSidebar(){
+      const sidebar = document.getElementsByClassName("sidebar");
+      sidebar[0].style.margin = "0px 0px 0px -250px";
+    }
+
+  </script>
+  <!-- sampe sini  -->
 </html>
