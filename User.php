@@ -521,7 +521,7 @@ $result = $connection->query($sql);
                    <a 
                         href="#popupDelete" 
                         class="link-button"
-                        onclick="document.getElementById('popupDelete').style.display = 'flex';"
+                        onclick="openDeletePopup(<?php echo $row['id_user']; ?>)"
                     >
                         Delete
                     </a>
@@ -545,7 +545,7 @@ $result = $connection->query($sql);
           <input type="text" placeholder="Jenis Kelamin" required name="jenis_kelamin"/>
           <input type="password" placeholder="Password" required name="password"/>
 
-          <label for="foto_pfofile">Foto Profil</label>
+          <label for="foto_profile">Foto Profil</label>
           <input
             type="file"
             name="foto_profil"
@@ -591,7 +591,7 @@ $result = $connection->query($sql);
         <button
           onclick="document.getElementById('popupDelete').style.display = 'none';"
         >
-        <a href="delete user.php?id=USER_ID" style="color: white; text-decoration: none;">
+        <a href="delete_user.php?id=" id="delete_button" style="color: white; text-decoration: none;">
             Yes, Delete
         </a>
         </button>
@@ -605,7 +605,6 @@ $result = $connection->query($sql);
       </div>
     </div>
   </body>
-    <!-- script js ditambah g ari  ===========================================================================================================-->
   <script>
 
     //burger menu yang ada di sidebar
@@ -623,6 +622,16 @@ $result = $connection->query($sql);
     function hideSidebar(){
       const sidebar = document.getElementsByClassName("sidebar");
       sidebar[0].style.margin = "0px 0px 0px -250px";
+    }
+
+    function openDeletePopup(userId) {
+    document.getElementById('popupDelete').style.display = 'flex';
+    document.getElementById('delete_button').href = 'delete_user.php?id=' + userId;
+    }
+
+    function openUpdatePopup(userId) {
+    document.getElementById('popupUpdate').style.display = 'flex';
+    document.getElementById('update_button').href = 'update_user.php?id=' + userId;
     }
 
   </script>
