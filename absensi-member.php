@@ -25,10 +25,10 @@
         background-color: #f0f2f5;
       }
 
-      /* di class sidebar ditambah margin, position sma transition  ===========================================================================================================*/
+     /* di class sidebar ditambah margin, position sma transition  ===========================================================================================================*/
       .sidebar {
         width: 250px;
-        height: 130vh;
+        height: 162vh;
         background-color: #6c217f;
         color: #ecf0f1;
         padding: 20px;
@@ -40,10 +40,17 @@
         transition: .5s;
       }
 
-      .sidebar h2 {
+       .sidebar_header{
+        display: flex;
+        justify-content: space-between;
+        height: 80px;
+        padding-right: 10px;
+      }
+
+       .sidebar nav h2 {
+        margin-top: 20px;
         font-size: 20px;
-        margin-bottom: 30px;
-        text-align: center;
+
       }
 
       .sidebar nav a {
@@ -226,7 +233,7 @@
         justify-content: center;
         transition: background-color 0.3s ease;
         margin-top: 15px;
-        margin-left: 1570px;
+        margin-left: 1800px;
         text-decoration: none;
         padding: 0px 10px 0px 10px;
       }
@@ -359,22 +366,33 @@
         background-color:#6c217f;
         border: 0px;
       }
+
+       #burger_menu_sidebar img{
+        width: 40px;
+        height: 40px;
+      }
     </style>
   </head>
   <body>
     <!-- Sidebar -->
     <div class="sidebar">
       <nav>
-        <h2>Bulu Tangkis</h2>
+         <!-- sidebar header diubah g ari  ===========================================================================================================-->
+        <div class="sidebar_header">
+          <button id="burger_menu_sidebar">
+            <img src="./img/Logo/interface.png" alt="">
+          </button>
+          <h2>Bulu Tangkis</h2>
+        </div>
+        <!-- sampe sini  -->
         <a href="Dashboard.php" class="underline-animation">Dashboard</a>
-        <a href="User.php" class="underline-animation">User </a>
-        <a href="absensi.php" class="underline">Absensi</a>
+`        <a href="absensi-member.php" class="underline">Absensi</a>
         <a href="index.php" class="underline-animation">Logout</a>
       </nav>
 
       <footer>
         <p style="font-size: 14px; color: #ffffff; text-align: center">
-          &copy; 2024 Lavie
+          &copy; 2024 IT
         </p>
       </footer>
     </div>
@@ -383,7 +401,7 @@
     <div class="main-content">
       <!-- Header -->
       <div class="header">
-          <!-- burger menu diubah g ari  ===========================================================================================================-->
+        <!-- burger menu diubah g ari  ===========================================================================================================-->
         <button id="burger_menu">
           <img src="./img/Logo/interface.png" alt="">  
         </button>
@@ -507,7 +525,7 @@
       </div>
     </div>
   </body>
-   <!-- script js ditambah g ari  ===========================================================================================================-->
+  <!-- script js ditambah  ===========================================================================================================-->
   <script>
 
     //burger menu yang ada di sidebar
