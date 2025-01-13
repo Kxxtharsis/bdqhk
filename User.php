@@ -428,6 +428,54 @@ $result = $connection->query($sql);
     display: none !important;
   } */
 
+/* Radio groub untuk pemilihan Gender Pria maupun Perempuan*/
+
+.radio-group {
+    display: flex;
+    flex-direction: row; /* Menyusun radio button secara horizontal */
+}
+
+.radio-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Jarak antara radio button */
+}
+
+input[type="radio"] {
+    display: none; /* Sembunyikan radio button default */
+}
+
+.radio-label {
+    position: relative;
+    padding-left: 20px;
+    cursor: pointer;
+    font-size: 15px;
+    color: #333;
+}
+
+.radio-label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border: 2px solid #6c217f;
+    border-radius: 50%;
+    background-color: white;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+input[type="radio"]:checked + .radio-label::before {
+    background-color: #6c217f;
+    border-color: #6c217f;
+}
+
+input[type="radio"]:checked + .radio-label {
+    color: #6c217f;
+}  
     </style>
   </head>
   <body>
@@ -494,8 +542,8 @@ $result = $connection->query($sql);
             <tr>
               <th>Photo</th>
               <th>Member name</th>
+              <th>Divisi</th>
               <th>Mobile</th>
-              <th>Email</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -540,9 +588,19 @@ $result = $connection->query($sql);
         <h2>Add User</h2>
         <form action="add_user.php" method="POST" enctype="multipart/form-data">
           <input type="text" placeholder="Enter name" name="nama" />
-          <input type="text" placeholder="Enter phone number" required name="telpon"/>
+          <input type="text" placeholder="No Telp atau No HP" required name="telpon"/>
           <input type="text" placeholder="Divisi" required name="divisi"/>
-          <input type="text" placeholder="Jenis Kelamin" required name="jenis_kelamin"/>
+          <!-- <input type="text" placeholder="Jenis Kelamin" required name="jenis_kelamin"/> -->
+            <div class="radio-group">
+              <div class="radio-container">
+                <input type="radio" id="gander" name="jenis_kelamin" value="1">
+                <label for="gander" class="radio-label">Male</label>
+              </div>
+              <div class="radio-container">
+                <input type="radio" id="goose" name="jenis_kelamin" value="0">
+                <label for="goose" class="radio-label">Female</label>
+              </div>
+            </div>
           <input type="password" placeholder="Password" required name="password"/>
 
           <label for="foto_pfofile">Foto Profil</label>
