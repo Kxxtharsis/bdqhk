@@ -3,6 +3,10 @@
 require_once("./connection.php");
 session_start();
 
+if ($_SESSION["nama"] != "admin") {
+  header('Location: Dashboard.php');
+}
+
 // Check connection
 if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
@@ -423,11 +427,6 @@ $result = $connection->query($sql);
         width: 40px;
         height: 40px;
       }
-
-  /* .sidebar{
-    display: none !important;
-  } */
-
 /* Radio groub untuk pemilihan Gender Pria maupun Perempuan*/
 
 .radio-group {
@@ -489,12 +488,15 @@ input[type="radio"]:checked + .radio-label {
           </button>
           <h2>Bulu Tangkis</h2>
         </div>
+        <?php
+          $uname_level = $_SESSION['nama'];
+        ?>
         <!-- sampe sini  -->
-        
         <a href="Dashboard.php" class="underline-animation">Dashboard</a>
-        <a href="User.php" class="underline">User </a>
-        <a href="absensi.php" class="underline-animation">Absensi</a>
-        <a href="index.php" class="underline-animation">Logout</a>
+        <a <?php if($uname_level != 'admin') echo 'style="display:none;"'; ?> href="User.php" class="underline">User</a>
+        <a <?php if($uname_level != 'admin') echo 'style="display:none;"'; ?> href="absensi.php" class="underline-animation">Absensi</a>
+        <a <?php if($uname_level == 'admin') echo 'style="display:none;"'; ?> href="absensi-member.php" class="underline-animation">Absensi</a>
+        <a href="logout.php" class="underline-animation">Logout</a>
       </nav>
       <footer>
         <p style="font-size: 14px; color: #ffffff; text-align: center">
@@ -587,10 +589,9 @@ input[type="radio"]:checked + .radio-label {
         <a href="User.php" class="close-btn">&times;</a>
         <h2>Add User</h2>
         <form action="add_user.php" method="POST" enctype="multipart/form-data">
-          <input type="text" placeholder="Enter name" name="nama" />
-          <input type="text" placeholder="No Telp atau No HP" required name="telpon"/>
-          <input type="text" placeholder="Divisi" required name="divisi"/>
-          <!-- <input type="text" placeholder="Jenis Kelamin" required name="jenis_kelamin"/> -->
+          <input type="text" placeholder="Enter name" name="nama" required />
+          <input type="text" placeholder="No Telp atau No HP" name="telpon" required/>
+          <input type="text" placeholder="Divisi" name="divisi" required/>
             <div class="radio-group">
               <div class="radio-container">
                 <input type="radio" id="gander" name="jenis_kelamin" value="1">
@@ -601,9 +602,9 @@ input[type="radio"]:checked + .radio-label {
                 <label for="goose" class="radio-label">Female</label>
               </div>
             </div>
-          <input type="password" placeholder="Password" required name="password"/>
+          <input type="password" placeholder="Password" required name="password" required/>
 
-          <label for="foto_profile">Foto Profil</label>
+          <label for="foto_profile" >Foto Profil</label>
           <input
             type="file"
             name="foto_profil"
@@ -613,7 +614,6 @@ input[type="radio"]:checked + .radio-label {
 
           <button
             type="submit"
-            onclick="document.getElementById('popupAdd').style.display = 'none';"
           >
             Add
           </button>

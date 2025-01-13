@@ -1,3 +1,17 @@
+<?php
+// Database connection
+require_once("./connection.php");
+session_start();
+
+// Check connection
+if (!$connection) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Fetch members data
+$sql = "SELECT * FROM user ORDER BY nama ASC";
+$result = $connection->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -384,10 +398,15 @@
           </button>
           <h2>Bulu Tangkis</h2>
         </div>
+        <?php
+          $uname_level = $_SESSION['nama'];
+        ?>
         <!-- sampe sini  -->
         <a href="Dashboard.php" class="underline-animation">Dashboard</a>
-`        <a href="absensi-member.php" class="underline">Absensi</a>
-        <a href="index.php" class="underline-animation">Logout</a>
+        <a <?php if($uname_level != 'admin') echo 'style="display:none;"'; ?> href="User.php" class="underline-animation">User</a>
+        <a <?php if($uname_level != 'admin') echo 'style="display:none;"'; ?> href="absensi.php" class="underline-animation">Absensi</a>
+        <a <?php if($uname_level == 'admin') echo 'style="display:none;"'; ?> href="absensi-member.php" class="underline">Absensi</a>
+        <a href="logout.php" class="underline-animation">Logout</a>
       </nav>
 
       <footer>
@@ -407,9 +426,17 @@
         </button>
         <!-- sampe sini   -->
         <h1>Absensi</h1>
+        <?php
+          $uname_login = $_SESSION['nama'];
+
+          $sql_login = "SELECT foto_profil FROM user WHERE nama = '$uname_login'";
+          $result_login = $connection->query($sql_login);
+          
+          $row_login = $result_login->fetch_assoc();''
+        ?>
         <div class="profile">
-          <img src="https://via.placeholder.com/35" alt="Profile Picture" />
-          <span>Admin</span>
+          <img src="upload/<?php echo $row_login['foto_profil'] ?>" alt="Profile Picture" />
+          <span><?php echo($_SESSION["nama"])?></span>
         </div>
       </div>
 
@@ -481,8 +508,8 @@
         <a href="absensi-member.php" class="close-btn">&times;</a>
         <h2>Absen</h2>
         <form>
-          <input type="date" placeholder="Enter Tanggal" required name="tanggal_absen"/>
-          <input type="text" placeholder="Enter Lokasi (sementara)" name="lokasi" />
+          <input type="date" placeholder="Enter Tanggal" name="tanggal_absen" required />
+          <input type="text" placeholder="Enter Lokasi (sementara)" name="lokasi" required />
           <label for="profile">Foto Bukti</label>
           <input
             type="file"
@@ -493,7 +520,6 @@
 
           <button
             type="submit"
-            onclick="document.getElementById('popupAdd').style.display = 'none';"
           >
             Absen
           </button>

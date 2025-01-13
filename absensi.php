@@ -400,11 +400,15 @@ $result = $connection->query($sql);
           </button>
           <h2>Bulu Tangkis</h2>
         </div>
+        <?php
+          $uname_level = $_SESSION['nama'];
+        ?>
         <!-- sampe sini  -->
         <a href="Dashboard.php" class="underline-animation">Dashboard</a>
-        <a href="User.php" class="underline-animation">User </a>
-        <a href="absensi.php" class="underline">Absensi</a>
-        <a href="index.php" class="underline-animation">Logout</a>
+        <a <?php if($uname_level != 'admin') echo 'style="display:none;"'; ?> href="User.php" class="underline-animation">User</a>
+        <a <?php if($uname_level != 'admin') echo 'style="display:none;"'; ?> href="absensi.php" class="underline">Absensi</a>
+        <a <?php if($uname_level == 'admin') echo 'style="display:none;"'; ?> href="absensi-member.php" class="underline-animation">Absensi</a>
+        <a href="logout.php" class="underline-animation">Logout</a>
       </nav>
 
       <footer>

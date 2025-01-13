@@ -368,10 +368,14 @@ $result = $connection->query($sql);
           </button>
           <h2>Bulu Tangkis</h2>
         </div>
+        <?php
+          $uname_level = $_SESSION['nama'];
+        ?>
         <!-- sampe sini  -->
         <a href="Dashboard.php" class="underline">Dashboard</a>
-        <a href="User.php" class="underline-animation">User</a>
-        <a href="absensi.php" class="underline-animation">Absensi</a>
+        <a <?php if($uname_level != 'admin') echo 'style="display:none;"'; ?> href="User.php" class="underline-animation">User</a>
+        <a <?php if($uname_level != 'admin') echo 'style="display:none;"'; ?> href="absensi.php" class="underline-animation">Absensi</a>
+        <a <?php if($uname_level == 'admin') echo 'style="display:none;"'; ?> href="absensi-member.php" class="underline-animation">Absensi</a>
         <a href="logout.php" class="underline-animation">Logout</a>
       </nav>
       <footer>
@@ -460,85 +464,20 @@ $result = $connection->query($sql);
           <div class="column">
             <img src="./img/bulu-tangkis.jpg" style="width: 100%" />
             <img src="./img/raket.jpg" style="width: 100%" />
-            <!-- <img
-              src="https://www.w3schools.com/w3images/falls2.jpg"
-              style="width: 100%"
-            /> -->
-            <!-- <img
-              src="https://www.w3schools.com/w3images/paris.jpg"
-              style="width: 100%"
-            /> -->
-            <!-- <img
-              src="https://www.w3schools.com/w3images/nature.jpg"
-              style="width: 100%"
-            /> -->
-            <!-- <img
-              src="https://www.w3schools.com/w3images/mist.jpg"
-              style="width: 100%"
-            /> -->
-            <!-- <img
-              src="https://www.w3schools.com/w3images/paris.jpg"
-              style="width: 100%"
-            /> -->
           </div>
           <div class="column">
             <img src="./img/2.jpg " style="width: 100%" />
             <img src="./img/10.jpg" style="width: 100%" />
             <img src="./img/5.jpg" style="width: 100%" />
-            <!-- <img
-              src="https://www.w3schools.com/w3images/mountainskies.jpg"
-              style="width: 100%"
-            /> -->
-            <!-- <img
-              src="https://www.w3schools.com/w3images/rocks.jpg"
-              style="width: 100%"
-            /> -->
-            <!-- <img
-              src="https://www.w3schools.com/w3images/underwater.jpg"
-              style="width: 100%"
-            /> -->
           </div>
           <div class="column">
             <img src="./img/4.jpg" style="width: 100%" />
             <img src="./img/3.jpg" style="width: 100%" />
-
-            <!-- <img
-              src="https://www.w3schools.com/w3images/falls2.jpg"
-              style="width: 100%"
-            /> -->
-            <!-- <img
-              src="https://www.w3schools.com/w3images/paris.jpg"
-              style="width: 100%"
-            /> -->
-            <!-- <img
-              src="https://www.w3schools.com/w3images/nature.jpg"
-              style="width: 100%"
-            /> -->
-            <!-- <img
-              src="https://www.w3schools.com/w3images/mist.jpg"
-              style="width: 100%"
-            /> -->
-            <!-- <img
-              src="https://www.w3schools.com/w3images/paris.jpg"
-              style="width: 100%"
-            /> -->
           </div>
           <div class="column">
             <img src="./img/13.jpg" style="width: 100%" />
             <img src="./img/11.jpg" style="width: 100%" />
             <img src="./img/8.jpg" style="width: 100%" />
-            <!-- <img
-              src="https://www.w3schools.com/w3images/mountainskies.jpg"
-              style="width: 100%"
-            /> -->
-            <!-- <img
-              src="https://www.w3schools.com/w3images/rocks.jpg"
-              style="width: 100%"
-            /> -->
-            <!-- <img
-              src="https://www.w3schools.com/w3images/underwater.jpg"
-              style="width: 100%"
-            /> -->
           </div>
         </div>
       </center>
